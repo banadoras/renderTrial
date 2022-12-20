@@ -49,7 +49,7 @@ router
 
 router
   .route("/:id")
-  .get(authenticate,async (req, res) => {
+  .get(async (req, res) => {
     try {
       const item = await Item.findById(req.params.id);
       if (item) {

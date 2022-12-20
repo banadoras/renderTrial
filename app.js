@@ -45,33 +45,13 @@ app.use("/users",require("./routers/user"))
 app.use("/items",require("./routers/item"))
 
 
-//------- Routes
-app.get("/",(req,res)=>{
-    res.render("home",{greeting:"Greeings from Server",user:req.session.user})
-})
 
-app.get("/login",(req,res)=>{
-    res.render("login",{user:req.session.user,message:req.flash("errorMessage")})
-})
-app.get("/register",(req,res)=>{
-    res.render("register",{user:req.session.user,message:req.flash("errorMessage")})
-})
-
-app.get("/protected",authenticate, (req, res) => {
-  res.render("protected", { user:req.session.user});
-});
-app.get("/profile", authenticate,(req, res) => {
-    res.render("profile",{user:req.session.user})
-})
 
 app.get("/logout", (req, res) => {
     req.session.destroy()
     res.redirect("/login")
 })
 
-app.get("/*",(req,res)=>{
-    res.render("error",{user:req.session.user})
-})
 
 //----------POST requests
 
@@ -89,10 +69,6 @@ app.post("/login", async (req, res) => {
 })
 
 
-//---- POST REQUESTS
-app.post("login",(req,res)=>{
-    
-})
 //---------- Server listening
 const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>{
