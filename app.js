@@ -3,6 +3,7 @@ require("dotenv").config()
 //-------- required packages/files
 const express = require("express")
 const app = express()
+var cors = require('cors')
 const methodOverride = require("method-override")
 const session = require("express-session")
 const flash = require("connect-flash")
@@ -23,6 +24,7 @@ const { authenticate, login } = require("./auth")
 
 //----- app set and use
 //app.set("view engine","ejs")
+app.use(cors())
 app.use(express.static(path.join(__dirname,"public")))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
