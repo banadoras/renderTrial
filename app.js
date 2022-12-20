@@ -61,6 +61,10 @@ app.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
+app.get("/*", (req, res) => {
+  res.send("Error 404: Page not found!");
+});
+
 //----------POST requests
 
 app.post("/login", async (req, res) => {
