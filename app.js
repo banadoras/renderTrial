@@ -24,7 +24,7 @@ const { authenticate, login } = require("./auth")
 
 //----- app set and use
 //app.set("view engine","ejs")
-const corsOpitions = {origin:"https://4vpf33.csb.app/",optionsSuccessStatus: 200 }
+const corsOptions = {origin:"https://4vpf33.csb.app/",optionsSuccessStatus: 200 }
 app.use(cors(corsOptions))
 app.use(express.static(path.join(__dirname,"public")))
 app.use(express.json())
